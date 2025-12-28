@@ -4,158 +4,275 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Doyel Mishra | AI & Software Engineer</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- SEO -->
+  <meta name="description" content="AI & Software Engineering student specializing in Machine Learning, Backend Development, and Data-Driven Applications.">
+  <meta name="author" content="Doyel Mishra">
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Navbar + Smooth Scroll -->
+  <script>
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          document.querySelector(link.getAttribute('href'))
+            .scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    });
+  </script>
 </head>
+
 <body>
 
-  <!-- HERO SECTION -->
-  <header class="hero">
-    <nav class="navbar">
-      <h2 class="logo">Doyel Mishra</h2>
+<!-- ================= NAV + HERO ================= -->
+<header class="hero">
+  <nav class="navbar">
+    <div class="nav-container">
+      <h2 class="logo">DM</h2>
+
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
-    </nav>
 
-    <div class="hero-content">
-      <h1>AI / ML & Software Engineering Student</h1>
-      <p>
-        I build data-driven and AI-powered applications with strong foundations
-        in Python, Java, and backend development.
-      </p>
-      <div class="hero-buttons">
-        <a href="#projects" class="btn primary">View Projects</a>
-        <a href="resume.pdf" class="btn secondary" target="_blank">Download Resume</a>
-      </div>
+      <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
     </div>
-  </header>
+  </nav>
 
-  <!-- ABOUT SECTION -->
-  <section id="about" class="section">
+  <div class="hero-content" data-aos="fade-up">
+    <div class="hero-flex">
+
+      <div class="hero-text">
+        <span class="hero-badge">AI • ML • Backend</span>
+        <h1>
+          Building intelligent, scalable <br />
+          <span class="highlight">software solutions</span>
+        </h1>
+        <p>
+          B.Tech Computer Science student focused on AI/ML, backend systems,
+          and data-driven applications using Python, Java, and modern frameworks.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn primary">Explore Projects</a>
+          <a href="/lec3/portfolio/resume.pdf" class="btn secondary" target="_blank">
+            Download Resume
+          </a>
+        </div>
+      </div>
+
+      <!-- ================= PROTECTED IMAGE ================= -->
+     <!-- <div class="hero-img protected-img" data-aos="zoom-in"></div>-->
+
+    </div>
+  </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="section" data-aos="fade-up">
+  <div class="container narrow">
     <h2>About Me</h2>
     <p>
-      I am a B.Tech Computer Science student specializing in Artificial
-      Intelligence, Machine Learning, and software engineering. I have
-      hands-on experience building backend systems, data analysis projects,
-      and AI-driven tools using Python, Java, Flask, and SQL.
+      I am a Computer Science undergraduate specializing in Artificial Intelligence,
+      Machine Learning, and Software Engineering. My work focuses on building
+      efficient backend systems and intelligent applications.
     </p>
     <p>
-      I have participated in national-level programs such as Smart India
-      Hackathon 2025 (Finalist), GirlScript Summer of Code, and the Womanium
-      Quantum AI Program, and completed an AI internship at Mirai School of
-      Technology.
+      I’ve contributed to national-level programs such as
+      <strong>Smart India Hackathon 2025 (Finalist)</strong>,
+      <strong>GirlScript Summer of Code</strong>,
+      and the <strong>Womanium Quantum AI Program</strong>,
+      along with an AI internship at Mirai School of Technology.
     </p>
-  </section>
+  </div>
+</section>
 
-  <!-- SKILLS SECTION -->
-  <section id="skills" class="section gray">
-    <h2>Skills</h2>
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="section gray" data-aos="fade-up">
+  <div class="container">
+    <h2>Core Skills</h2>
+
     <div class="skills-grid">
       <div class="skill-card">
         <h3>Languages</h3>
         <p>Python, Java, C, JavaScript, SQL</p>
       </div>
+
       <div class="skill-card">
-        <h3>AI / Data</h3>
+        <h3>AI & Data</h3>
         <p>Machine Learning, EDA, Prompt Engineering, Streamlit</p>
       </div>
+
       <div class="skill-card">
-        <h3>Web / Backend</h3>
+        <h3>Backend & Web</h3>
         <p>Flask, FastAPI, REST APIs, HTML, CSS</p>
       </div>
+
       <div class="skill-card">
-        <h3>Tools</h3>
+        <h3>Tools & Cloud</h3>
         <p>Git, GitHub, Docker, GCP, VS Code, Jupyter</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PROJECTS SECTION -->
-  <section id="projects" class="section">
-    <h2>Projects</h2>
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="section" data-aos="fade-up">
+  <div class="container">
+    <h2>Selected Projects</h2>
 
-    <div class="project-card">
-      <h3>Streamlit Sales Forecasting Dashboard</h3>
-      <p>
-        Interactive dashboard for sales trend analysis and forecasting using
-        Python and Prophet.
-      </p>
-      <span>Python • Streamlit • Prophet</span>
-      <div class="links">
-        <a href="https://github.com/DoyelMishra15/FUTURE_ML_01" target="_blank">GitHub</a>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <h3>Sales Forecasting Dashboard</h3>
+        <p>
+          Interactive Streamlit dashboard for sales analysis and time-series forecasting.
+        </p>
+        <span>Python • Streamlit • Prophet</span>
+        <a href="https://github.com/DoyelMishra15/FUTURE_ML_01" target="_blank">View on GitHub →</a>
       </div>
-    </div>
 
-    <div class="project-card">
-      <h3>Online Retail EDA</h3>
-      <p>
-        Exploratory data analysis project to understand customer behavior and
-        regional sales trends.
-      </p>
-      <span>Python • Pandas • Matplotlib</span>
-      <div class="links">
-        <a href="https://github.com/DoyelMishra15/EDA-Project" target="_blank">GitHub</a>
+      <div class="project-card">
+        <h3>Online Retail EDA</h3>
+        <p>
+          Exploratory data analysis to uncover customer behavior and regional sales trends.
+        </p>
+        <span>Python • Pandas • Matplotlib</span>
+        <a href="https://github.com/DoyelMishra15/EDA-Project" target="_blank">View on GitHub →</a>
       </div>
-    </div>
 
-    <div class="project-card">
-      <h3>Java DSA Practice</h3>
-      <p>
-        Collection of classic data structures and algorithm implementations in
-        Java.
-      </p>
-      <span>Java • DSA</span>
-      <div class="links">
-        <a href="https://github.com/DoyelMishra15/Java/tree/main/dsa" target="_blank">GitHub</a>
+      <div class="project-card">
+        <h3>Java DSA Repository</h3>
+        <p>
+          Clean implementations of core data structures and algorithms for interviews.
+        </p>
+        <span>Java • DSA</span>
+        <a href="https://github.com/DoyelMishra15/Java/tree/main/dsa" target="_blank">View on GitHub →</a>
       </div>
-    </div>
-  </section>
 
-  <!-- EXPERIENCE SECTION -->
-  <section id="experience" class="section gray">
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience" class="section gray" data-aos="fade-up">
+  <div class="container">
     <h2>Experience</h2>
-
-    <div class="experience-card">
-      <h3>AI / Prompt Engineering Intern</h3>
-      <p class="org">Mirai School of Technology | Jul 2025 – Aug 2025</p>
-      <ul>
-        <li>Designed and optimized prompts for AI automation workflows.</li>
-        <li>Built AI prototypes using Python and Streamlit.</li>
-        <li>Worked on AI integrations and user interaction improvements.</li>
-      </ul>
-    </div>
 
     <div class="experience-card">
       <h3>Smart India Hackathon 2025 – Finalist</h3>
       <ul>
-        <li>Developed a real-world solution under tight deadlines.</li>
-        <li>Worked with Python, Flask, and SQL for backend logic.</li>
-        <li>Presented solution to national-level judges.</li>
+        <li>Developed a real-world solution under tight deadlines</li>
+        <li>Implemented backend logic using Python, Flask, and SQL</li>
+        <li>Presented the solution to national-level judges</li>
       </ul>
     </div>
-  </section>
+  </div><br>
 
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Let’s connect and build something impactful.</p>
+  <div class="experience-card">
+      <h3>AI / Prompt Engineering Intern</h3>
+      <p class="org">Mirai School of Technology · Jul 2025 – Aug 2025</p>
+      <ul>
+        <li>Designed and optimized prompts for AI automation workflows</li>
+        <li>Built AI prototypes using Python and Streamlit</li>
+        <li>Worked on AI integrations and UX improvements</li>
+      </ul>
+    </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="section" data-aos="fade-up">
+  <div class="container narrow center">
+    <h2>Let’s Connect</h2>
+    <p>Open to internships, collaborations, and impactful projects.</p>
+
     <div class="contact-links">
       <a href="mailto:doyel.mishra.5@gmail.com">Email</a>
       <a href="https://github.com/DoyelMishra15" target="_blank">GitHub</a>
       <a href="https://linkedin.com/in/doyelmishra15" target="_blank">LinkedIn</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2025 Doyel Mishra</p>
-  </footer>
+<footer>
+  <p>© 2025 Doyel Mishra · Built with purpose</p>
+</footer>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 900, once: true, easing: "ease-out-cubic" });
+</script>
+
+<!-- THEME TOGGLE -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.querySelector('.theme-toggle');
+    const root = document.documentElement;
+
+    if (!toggleBtn) return;
+
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme) {
+      root.setAttribute('data-theme', savedTheme);
+      toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      root.setAttribute('data-theme', 'dark');
+      toggleBtn.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+
+      root.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      toggleBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+  });
+</script>
+
+<!-- IMAGE PROTECTION -->
+<script>
+  // Disable right-click globally
+  document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+  // Disable common save/view shortcuts
+  document.addEventListener("keydown", (e) => {
+    if (
+      e.key === "PrintScreen" ||
+      (e.ctrlKey && e.key.toLowerCase() === "s") ||
+      (e.ctrlKey && e.key.toLowerCase() === "u") ||
+      (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i")
+    ) {
+      e.preventDefault();
+      alert("Image protection is enabled.");
+    }
+  });
+</script>
 
 </body>
 </html>
