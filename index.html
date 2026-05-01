@@ -504,10 +504,10 @@ h2.section-title {
 .p-card:hover::after { transform:translate(4px,-4px);color:var(--accent1); }
 
 /* Featured card spans more */
-.p-card.feat { grid-column:span 7; }
-.p-card.tall { grid-column:span 5; }
-.p-card.wide { grid-column:span 6; }
-.p-card.slim { grid-column:span 4; }
+.p-card.feat { grid-column:span 7; min-height:260px; }
+.p-card.tall { grid-column:span 5; min-height:260px; }
+.p-card.wide { grid-column:span 6; min-height:220px; }
+.p-card.slim { grid-column:span 4; min-height:200px; }
 
 /* Glow accent line */
 .p-card::before {
@@ -711,7 +711,7 @@ footer a:hover { color:var(--accent1); }
     </p>
     <div class="hero-cta">
       <a href="#projects" class="btn-primary"><span>View Projects ↓</span></a>
-      <a href="https://raw.githubusercontent.com/DoyelMishra15/Portfolio/main/resume.pdf" class="btn-ghost" target="_blank">View Resume ↗</a>
+      <a href="https://raw.githubusercontent.com/DoyelMishra15/Portfolio/main/resume.pdf" class="btn-ghost" target="_blank">Download Resume ↗</a>
     </div>
   </div>
 
@@ -800,6 +800,7 @@ footer a:hover { color:var(--accent1); }
   <h2 class="section-title reveal">Things I've built.</h2><br>
   <div class="projects-bento reveal">
 
+    <!-- ROW 1: 7 + 5 = 12 -->
     <a class="p-card feat" href="https://github.com/DoyelMishra15/ai-app-compiler" target="_blank">
       <div>
         <div class="p-num">01</div>
@@ -813,23 +814,12 @@ footer a:hover { color:var(--accent1); }
       </div>
     </a>
 
-      <a class="p-card wide" href="https://github.com/DoyelMishra15/Employee_Sentiment_Analysis_Project" target="_blank">
-      <div>
-        <div class="p-num">02</div>
-        <div class="p-title">Employee Sentiment Analysis</div>
-        <div class="p-desc">NLP pipeline classifying employee feedback. Actionable HR insights via text preprocessing and sentiment modeling.</div>
-      </div>
-      <div class="p-stack">
-        <span class="p-tech">Python</span><span class="p-tech">NLP</span><span class="p-tech">ML</span>
-      </div>
-    </a>
-    
     <a class="p-card tall" href="https://github.com/DoyelMishra15/SwarajDesk_CV_Project_" target="_blank">
       <div>
-        <div class="p-num">03</div>
+        <div class="p-num">02</div>
         <div class="p-badge">⭐ Featured</div>
         <div class="p-title">SwarajDesk — Vision-LLM Router</div>
-        <div class="p-desc">AI-powered civic grievance routing system for SIH 2025. Vision Transformer + Vision-LLM pipeline for smart governance.</div>
+        <div class="p-desc">AI-powered civic grievance routing for SIH 2025. Vision Transformer + Vision-LLM pipeline for smart governance.</div>
       </div>
       <div class="p-stack">
         <span class="p-tech">Python</span><span class="p-tech">Computer Vision</span>
@@ -837,9 +827,33 @@ footer a:hover { color:var(--accent1); }
       </div>
     </a>
 
-    <a class="p-card slim" href="https://github.com/DoyelMishra15/Sales-Forecasting-Dashboard" target="_blank">
+    <!-- ROW 2: 6 + 6 = 12 -->
+    <a class="p-card wide" href="https://github.com/DoyelMishra15/Employee_Sentiment_Analysis_Project" target="_blank">
+      <div>
+        <div class="p-num">03</div>
+        <div class="p-title">Employee Sentiment Analysis</div>
+        <div class="p-desc">NLP pipeline classifying employee feedback. Actionable HR insights via text preprocessing and sentiment modeling.</div>
+      </div>
+      <div class="p-stack">
+        <span class="p-tech">Python</span><span class="p-tech">NLP</span><span class="p-tech">ML</span>
+      </div>
+    </a>
+
+    <a class="p-card wide" href="https://github.com/DoyelMishra15/GEN_AI_PROJECTS" target="_blank">
       <div>
         <div class="p-num">04</div>
+        <div class="p-title">GenAI Projects Collection</div>
+        <div class="p-desc">Curated collection of LLM, RAG-based intelligent applications, and AI-powered tools.</div>
+      </div>
+      <div class="p-stack">
+        <span class="p-tech">Python</span><span class="p-tech">Generative AI</span><span class="p-tech">RAG</span>
+      </div>
+    </a>
+
+    <!-- ROW 3: 4 + 4 + 4 = 12 -->
+    <a class="p-card slim" href="https://github.com/DoyelMishra15/Sales-Forecasting-Dashboard" target="_blank">
+      <div>
+        <div class="p-num">05</div>
         <div class="p-title">Sales Forecast Dashboard</div>
         <div class="p-desc">Time-series demand forecasting with Power BI visualization.</div>
       </div>
@@ -848,17 +862,6 @@ footer a:hover { color:var(--accent1); }
       </div>
     </a>
 
-    <a class="p-card wide" href="https://github.com/DoyelMishra15/GEN_AI_PROJECTS" target="_blank">
-      <div>
-        <div class="p-num">05</div>
-        <div class="p-title">GenAI Projects Collection</div>
-        <div class="p-desc">Curated collection of LLM, RAG-based intelligent applications, and AI-powered tools.</div>
-      </div>
-      <div class="p-stack">
-        <span class="p-tech">Python</span><span class="p-tech">Generative AI</span><span class="p-tech">RAG</span>
-      </div>
-    </a>
-    
     <a class="p-card slim" href="https://github.com/DoyelMishra15/Online-Retail-Project" target="_blank">
       <div>
         <div class="p-num">06</div>
