@@ -42,10 +42,14 @@
 
   /* ---------------- custom cursor ---------------- */
   .cursor-dot, .cursor-ring{ position:fixed; top:0; left:0; pointer-events:none; z-index:999; border-radius:50%; transform:translate(-50%,-50%); }
-  .cursor-dot{ width:6px; height:6px; background:var(--signal); transition:opacity .2s; }
-  .cursor-ring{ width:34px; height:34px; border:1px solid var(--signal); opacity:.6; transition:width .25s var(--ease), height .25s var(--ease), opacity .25s, border-color .25s; }
-  body.cursor-active .cursor-ring.grow{ width:64px; height:64px; opacity:.9; background:var(--signal-soft); }
-  @media (hover:none), (pointer:coarse){ .cursor-dot,.cursor-ring{ display:none; } }
+  .cursor-dot{ width:6px; height:6px; background:var(--signal); transition:opacity .2s, transform .2s var(--ease); }
+  .cursor-ring{ width:34px; height:34px; border:1px solid var(--signal); opacity:.6; transition:width .3s var(--ease), height .3s var(--ease), opacity .3s, border-color .3s, background .3s, transform .3s var(--ease); }
+  .cursor-ring.grow{ width:64px; height:64px; opacity:.9; background:var(--signal-soft); }
+  .cursor-ring.grow-soft{ width:52px; height:52px; opacity:.5; border-style:dashed; }
+  .cursor-dot.shrink{ transform:translate(-50%,-50%) scale(.4); }
+  .cursor-label{ position:fixed; top:0; left:0; z-index:999; pointer-events:none; transform:translate(-50%,-50%); font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--signal); opacity:0; transition:opacity .25s var(--ease); white-space:nowrap; }
+  .cursor-label.show{ opacity:1; }
+  @media (hover:none), (pointer:coarse){ .cursor-dot,.cursor-ring,.cursor-label{ display:none; } }
 
   /* ---------------- loader ---------------- */
   #loader{
@@ -71,6 +75,8 @@
     cursor:pointer; transition:border-color .3s, transform .2s;
   }
   .theme-toggle:hover{ border-color:var(--signal); transform:translateY(-1px) rotate(20deg); }
+  .magnetic{ transition:transform .2s var(--ease); will-change:transform; }
+  @media (hover:none), (pointer:coarse){ .magnetic{ transform:none !important; } }
   .theme-toggle svg{ width:15px; height:15px; }
 
   .chapter-nav{ position:fixed; right:32px; top:50%; transform:translateY(-50%); z-index:150; display:flex; flex-direction:column; gap:15px; }
@@ -124,6 +130,9 @@
   .origin-hint .arrows span:nth-child(2){ animation-delay:.15s; }
   .origin-hint .arrows span:nth-child(3){ animation-delay:.3s; }
   @keyframes nudge{ 0%,100%{ opacity:.3; transform:translateX(0);} 50%{ opacity:1; transform:translateX(4px);} }
+  .origin-progress{ position:absolute; bottom:0; left:0; width:100%; height:1px; background:var(--line); }
+  .origin-progress-fill{ height:100%; width:0%; background:var(--signal); transform-origin:left; transition:width .1s linear; }
+  .origin-panel{ transition:opacity .5s var(--ease), transform .5s var(--ease); }
 
   /* ================= CH.3 — TIMELINE ================= */
   #timeline{ padding:150px 0; }
@@ -197,6 +206,23 @@
   .also-shipped{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:80px; }
   .chip-link{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; padding:10px 18px; border:1px solid var(--line-strong); border-radius:20px; transition:all .25s var(--ease); }
   .chip-link:hover{ border-color:var(--signal); color:var(--signal); }
+  .chip-link .arrow, .act-link .arrow{ display:inline-block; transition:transform .3s var(--ease); }
+  .chip-link:hover .arrow{ transform:translate(2px,-2px); }
+  .act-link:hover .arrow{ transform:translateX(3px); }
+
+  /* ---------------- tilt + glow cards ---------------- */
+  .tilt-card{ position:relative; border-radius:6px; transition:transform .45s var(--ease), box-shadow .45s var(--ease); will-change:transform; transform-style:preserve-3d; }
+  .tilt-card::before{
+    content:''; position:absolute; inset:-14px; border-radius:inherit; z-index:-1;
+    background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%), color-mix(in srgb, var(--signal) 14%, transparent), transparent 72%);
+    opacity:0; transition:opacity .45s var(--ease); pointer-events:none;
+  }
+  .tilt-card.tilt-active::before{ opacity:1; }
+  .tilt-card.tilt-active{ box-shadow:0 24px 48px -30px color-mix(in srgb, var(--ink) 22%, transparent); }
+  @media (hover:none), (pointer:coarse){
+    .tilt-card{ transform:none !important; box-shadow:none !important; }
+    .tilt-card::before{ display:none; }
+  }
 
   /* ================= CH.5 — TOOLKIT (constellation) ================= */
   #toolkit{ padding:150px 0; }
@@ -265,6 +291,7 @@
 <div id="scrollbar"></div>
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
+<div class="cursor-label mono" id="cursorLabel"></div>
 
 <div class="chrome-topleft display">DM</div>
 <div class="chrome-topright">
@@ -274,13 +301,13 @@
 </div>
 
 <nav class="chapter-nav" id="chapterNav">
-  <button data-target="hero" class="active"><span class="cn-label mono">signal</span><span class="cn-dot"></span></button>
-  <button data-target="origin"><span class="cn-label mono">origin</span><span class="cn-dot"></span></button>
-  <button data-target="timeline"><span class="cn-label mono">timeline</span><span class="cn-dot"></span></button>
-  <button data-target="builds"><span class="cn-label mono">builds</span><span class="cn-dot"></span></button>
-  <button data-target="toolkit"><span class="cn-label mono">toolkit</span><span class="cn-dot"></span></button>
-  <button data-target="recognition"><span class="cn-label mono">recognition</span><span class="cn-dot"></span></button>
-  <button data-target="closing"><span class="cn-label mono">contact</span><span class="cn-dot"></span></button>
+  <button class="magnetic active" data-target="hero"><span class="cn-label mono">signal</span><span class="cn-dot"></span></button>
+  <button class="magnetic" data-target="origin"><span class="cn-label mono">origin</span><span class="cn-dot"></span></button>
+  <button class="magnetic" data-target="timeline"><span class="cn-label mono">timeline</span><span class="cn-dot"></span></button>
+  <button class="magnetic" data-target="builds"><span class="cn-label mono">builds</span><span class="cn-dot"></span></button>
+  <button class="magnetic" data-target="toolkit"><span class="cn-label mono">toolkit</span><span class="cn-dot"></span></button>
+  <button class="magnetic" data-target="recognition"><span class="cn-label mono">recognition</span><span class="cn-dot"></span></button>
+  <button class="magnetic" data-target="closing"><span class="cn-label mono">contact</span><span class="cn-dot"></span></button>
 </nav>
 
 <main>
@@ -331,6 +358,7 @@
       </div>
     </div>
     <div class="origin-hint"><span class="arrows"><span>›</span><span>›</span><span>›</span></span> scroll or swipe horizontally</div>
+    <div class="origin-progress"><div class="origin-progress-fill" id="originProgressFill"></div></div>
   </section>
 
   <!-- CH.3 TIMELINE -->
@@ -391,7 +419,7 @@
               <p class="act-text">An AI resume‑analysis tool built on FastAPI and sentence‑transformers. It computes a JD match score and surfaces skill gaps — with an async architecture behind it.</p>
               <a class="act-link" href="https://github.com/DoyelMishra15/CareerLens-AI" target="_blank" rel="noopener">View on GitHub ↗</a>
             </div>
-            <div class="counter-block">
+            <div class="counter-block tilt-card" data-tilt>
               <div class="counter"><span class="cval display" data-count="2" data-suffix="s">0s</span><span class="clabel">per resume evaluated</span></div>
               <div class="counter"><span class="cval display" data-count="50" data-suffix="+/min">0+/min</span><span class="clabel">batch throughput, async</span></div>
             </div>
@@ -408,7 +436,7 @@
               <p class="act-text">A Streamlit dashboard combining Prophet and polynomial regression — configurable 30–365 day forecasts, KPI tracking, rolling averages, and anomaly alerts.</p>
               <a class="act-link" href="https://github.com/DoyelMishra15/Sales-Forecasting-Dashboard" target="_blank" rel="noopener">View on GitHub ↗</a>
             </div>
-            <div class="chart-wrap">
+            <div class="chart-wrap tilt-card" data-tilt>
               <svg viewBox="0 0 400 220">
                 <defs><linearGradient id="chartgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--signal)" stop-opacity="0.28"/><stop offset="100%" stop-color="var(--signal)" stop-opacity="0"/></linearGradient></defs>
                 <path class="area" d="M0 170 C 60 150,90 90,140 100 S 220 60,260 70 S 330 30,400 20 L400 220 L0 220 Z"/>
@@ -430,7 +458,7 @@
               <p class="act-text">An NLP pipeline classifying open‑ended employee feedback through text preprocessing and sentiment modeling — turning free text into HR‑actionable signal.</p>
               <a class="act-link" href="https://github.com/DoyelMishra15/Employee_Sentiment_Analysis_Project" target="_blank" rel="noopener">View on GitHub ↗</a>
             </div>
-            <div class="word-cloud mono" style="font-family:'Fraunces',serif;">
+            <div class="word-cloud mono tilt-card" data-tilt style="font-family:'Fraunces',serif;">
               <span class="hot">morale</span><span>burnout</span><span class="hot">clarity</span><span>friction</span><span>trust</span><span class="hot">momentum</span><span>tenure</span>
             </div>
           </div>
@@ -532,8 +560,8 @@ if(!isCoarse){
   function ringLoop(){ rx += (mx-rx)*0.18; ry += (my-ry)*0.18; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(ringLoop); }
   ringLoop();
   document.querySelectorAll('a, button, .badge, [data-act]').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('grow'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('grow'));
+    el.addEventListener('mouseenter', () => { ring.classList.add('grow'); dot.classList.add('shrink'); });
+    el.addEventListener('mouseleave', () => { ring.classList.remove('grow'); dot.classList.remove('shrink'); });
   });
 }
 
@@ -813,22 +841,22 @@ document.querySelectorAll('#heroName .ln').forEach((line, li) => {
   const h = document.getElementById('magnetic-heading');
   const words = "Let's build something.".split(' ');
   h.innerHTML = words.map(w => '<span class="mword">'+[...w].map(c=>'<span class="mch">'+c+'</span>').join('')+'&nbsp;</span>').join('');
-  const chars = h.querySelectorAll('.mch');
+  const chars = Array.from(h.querySelectorAll('.mch')).map(c => ({ el:c, cur:0, target:0 }));
   if(!isCoarse){
-    window.addEventListener('mousemove', e => {
+    let mouseX=-9999, mouseY=-9999;
+    window.addEventListener('mousemove', e => { mouseX=e.clientX; mouseY=e.clientY; });
+    function loop(){
       chars.forEach(c => {
-        const r = c.getBoundingClientRect();
+        const r = c.el.getBoundingClientRect();
         const cx = r.left + r.width/2, cy = r.top + r.height/2;
-        const dist = Math.hypot(e.clientX-cx, e.clientY-cy);
-        if(dist < 140){
-          const f = (1 - dist/140);
-          const dy = (cy - e.clientY) * f * 0.35;
-          c.style.transform = 'translateY(' + dy + 'px)';
-        } else {
-          c.style.transform = 'translateY(0)';
-        }
+        const dist = Math.hypot(mouseX-cx, mouseY-cy);
+        c.target = dist < 140 ? (cy - mouseY) * (1 - dist/140) * 0.35 : 0;
+        c.cur += (c.target - c.cur) * (reduceMotion ? 1 : 0.18);
+        c.el.style.transform = 'translateY(' + c.cur.toFixed(2) + 'px)';
       });
-    });
+      requestAnimationFrame(loop);
+    }
+    loop();
   }
 })();
 
@@ -847,6 +875,141 @@ document.querySelectorAll('#heroName .ln').forEach((line, li) => {
     }
   });
   egg.addEventListener('click', () => egg.classList.remove('show'));
+})();
+
+/* =========================================================
+   MOTION ENHANCEMENTS — additive layer, same design intact
+   ========================================================= */
+
+/* ---------- wrap trailing arrow glyphs for smooth motion ---------- */
+(function(){
+  document.querySelectorAll('.act-link, .chip-link, .btn-ghost').forEach(a => {
+    if(a.querySelector('.arrow')) return;
+    const raw = a.innerHTML;
+    if(raw.indexOf('↗') === -1) return;
+    a.innerHTML = raw.replace('↗', '<span class="arrow">↗</span>');
+  });
+})();
+
+/* ---------- hero canvas: cursor-reactive parallax ---------- */
+(function(){
+  if(isCoarse) return;
+  const canvas = document.getElementById('signalCanvas');
+  let px=0, py=0, tx=0, ty=0;
+  window.addEventListener('mousemove', e => {
+    const nx = (e.clientX / window.innerWidth) - 0.5;
+    const ny = (e.clientY / window.innerHeight) - 0.5;
+    tx = nx * 18; ty = ny * 14;
+  });
+  function loop(){
+    px += (tx-px)*0.06; py += (ty-py)*0.06;
+    canvas.style.transform = 'translate3d(' + px.toFixed(2) + 'px,' + py.toFixed(2) + 'px,0) scale(1.03)';
+    if(!reduceMotion) requestAnimationFrame(loop);
+  }
+  if(!reduceMotion) loop();
+})();
+
+/* ---------- project card tilt + cursor glow ---------- */
+(function(){
+  if(isCoarse || reduceMotion) return;
+  document.querySelectorAll('[data-tilt]').forEach(card => {
+    const MAX = 3.5; // degrees — subtle
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const px2 = (e.clientX - r.left) / r.width;
+      const py2 = (e.clientY - r.top) / r.height;
+      const rotY = (px2 - 0.5) * MAX * 2;
+      const rotX = (0.5 - py2) * MAX * 2;
+      card.style.transform = 'perspective(700px) rotateX(' + rotX.toFixed(2) + 'deg) rotateY(' + rotY.toFixed(2) + 'deg) translateZ(0)';
+      card.style.setProperty('--mx', (px2*100).toFixed(1) + '%');
+      card.style.setProperty('--my', (py2*100).toFixed(1) + '%');
+      card.classList.add('tilt-active');
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.classList.remove('tilt-active');
+    });
+  });
+})();
+
+/* ---------- custom cursor: refined hover states + label ---------- */
+if(!isCoarse){
+  const ring = document.querySelector('.cursor-ring');
+  const dot = document.querySelector('.cursor-dot');
+  const cLabel = document.getElementById('cursorLabel');
+  let lx=0, ly=0;
+  window.addEventListener('mousemove', e => { lx=e.clientX; ly=e.clientY; cLabel.style.left=lx+'px'; cLabel.style.top=(ly-34)+'px'; });
+
+  document.querySelectorAll('[data-tilt]').forEach(el => {
+    el.addEventListener('mouseenter', () => { ring.classList.add('grow-soft'); dot.classList.add('shrink'); });
+    el.addEventListener('mouseleave', () => { ring.classList.remove('grow-soft'); dot.classList.remove('shrink'); });
+  });
+
+  document.querySelectorAll('.act-link, .chip-link').forEach(el => {
+    el.addEventListener('mouseenter', () => { cLabel.textContent='view ↗'; cLabel.classList.add('show'); });
+    el.addEventListener('mouseleave', () => cLabel.classList.remove('show'));
+  });
+}
+
+/* ---------- generic staggered children reveal ---------- */
+(function(){
+  const groups = document.querySelectorAll('.tl-card ul, .also-shipped, .closing-links');
+  groups.forEach(group => {
+    const kids = Array.from(group.children);
+    kids.forEach((kid, i) => {
+      kid.classList.add('reveal');
+      kid.style.transitionDelay = (i * 0.07) + 's';
+    });
+  });
+  const staggerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); staggerObserver.unobserve(e.target); } });
+  }, { threshold:0.2 });
+  document.querySelectorAll('.tl-card ul li, .also-shipped > *, .closing-links > *').forEach(el => staggerObserver.observe(el));
+})();
+
+/* ---------- origin: parallax depth + scroll progress ---------- */
+(function(){
+  const track = document.getElementById('originTrack');
+  const fill = document.getElementById('originProgressFill');
+  const panels = document.querySelectorAll('.origin-panel');
+  function update(){
+    const max = track.scrollWidth - track.clientWidth;
+    const pct = max > 0 ? (track.scrollLeft / max) * 100 : 0;
+    fill.style.width = pct + '%';
+    if(reduceMotion) return;
+    const center = track.scrollLeft + track.clientWidth / 2;
+    panels.forEach(p => {
+      const pCenter = p.offsetLeft + p.offsetWidth / 2;
+      const dist = Math.min(1, Math.abs(center - pCenter) / (track.clientWidth * 0.7));
+      p.style.opacity = (1 - dist * 0.55).toFixed(2);
+      p.style.transform = 'scale(' + (1 - dist * 0.05).toFixed(3) + ')';
+    });
+  }
+  track.addEventListener('scroll', update, { passive:true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+/* ---------- magnetic side navigation (signature interaction) ---------- */
+(function(){
+  if(isCoarse || reduceMotion) return;
+  document.querySelectorAll('.magnetic').forEach(el => {
+    let tx2=0, ty2=0, cx=0, cy=0;
+    const radius = 46, strength = 0.4;
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width/2);
+      const dy = e.clientY - (r.top + r.height/2);
+      const dist = Math.hypot(dx,dy);
+      if(dist < radius){ tx2 = dx*strength; ty2 = dy*strength; }
+    });
+    el.addEventListener('mouseleave', () => { tx2=0; ty2=0; });
+    (function loop(){
+      cx += (tx2-cx)*0.2; cy += (ty2-cy)*0.2;
+      el.style.transform = 'translate(' + cx.toFixed(2) + 'px,' + cy.toFixed(2) + 'px)';
+      requestAnimationFrame(loop);
+    })();
+  });
 })();
 </script>
 </body>
