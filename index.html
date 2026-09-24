@@ -158,7 +158,7 @@
   .tl-role{ font-family:'Fraunces',serif; font-size:24px; font-weight:460; margin-bottom:3px; }
   .tl-org{ font-size:14px; color:var(--ink-soft); margin-bottom:14px; }
   .tl-card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
-  .tl-entry:nth-child(1) .tl-card ul{ align-items:flex-end; }
+  .tl-entry:not(:nth-child(2)) .tl-card ul{ align-items:flex-end; }
   .tl-card li{ font-size:14.5px; color:var(--ink-soft); max-width:340px; }
 
   /* ================= CH.4 — BUILDS ================= */
@@ -348,12 +348,13 @@
           <div class="origin-stats">
             <div class="os"><span class="n display">ISRO</span><span class="l">SDSC SHAR — Selectee</span></div>
             <div class="os"><span class="n display">SIH</span><span class="l">2025 National Finalist</span></div>
+            <div class="os"><span class="n display">200+</span><span class="l">LeetCode Problems Solved</span></div>
           </div>
         </div>
         <div class="origin-panel">
-          <div class="origin-index mono">04 — the habit</span></div>
+          <div class="origin-index mono">04 — the habit</div>
           <div class="origin-statement display">Practice compounds. So I keep showing up.</div>
-          <p class="origin-caption">Daily DSA practice, open‑source contributions via GirlScript Summer of Code, and a structured AI/ML internship right now — closing the gap between a model and a product.</p>
+          <p class="origin-caption">Daily DSA practice, hands‑on hackathons like AWS × WeMakeDevs and Razorpay's AI Buildathon, and a nearly‑wrapped AI/ML internship — closing the gap between a model and a product.</p>
         </div>
       </div>
     </div>
@@ -366,20 +367,19 @@
     <div class="wrap">
       <div class="tl-head reveal">
         <div class="k">Where I've worked</div>
-        <h2 class="display">Two internships. One in progress.</h2>
+        <h2 class="display">Two internships. One selection ahead.</h2>
       </div>
       <div class="tl-rail">
         <div class="tl-line"><div class="tl-line-fill" id="tlFill"></div></div>
 
         <div class="tl-entry reveal" data-tl>
           <div class="tl-card">
-            <div class="tl-date mono">Jul 2026 — Present <span class="tl-tag">Current</span></div>
-            <div class="tl-role display">AI / ML Intern</div>
-            <div class="tl-org">Infosys Springboard — Virtual Internship 7.0</div>
+            <div class="tl-date mono">2026 <span class="tl-tag">Selectee</span></div>
+            <div class="tl-role display">Internship Selectee</div>
+            <div class="tl-org">ISRO — Satish Dhawan Space Centre (SDSC SHAR)</div>
             <ul>
-              <li>Structured, curriculum‑based internship spanning AI, Machine Learning, and Generative AI fundamentals.</li>
-              <li>Practicing prompt engineering alongside Agile, the SDLC, and Git/GitHub workflows.</li>
-              <li>Building backend fluency to connect ML work to deployable applications.</li>
+              <li>Selected for an internship at Satish Dhawan Space Centre — India's premier space launch facility.</li>
+              <li>Provisional selection; onboarding and exact dates to be confirmed by ISRO.</li>
             </ul>
           </div>
           <div class="tl-node"><div class="dot now"></div></div>
@@ -387,6 +387,19 @@
 
         <div class="tl-entry reveal" data-tl>
           <div class="tl-node"><div class="dot"></div></div>
+          <div class="tl-card">
+            <div class="tl-date mono">Jul 2026 — Present <span class="tl-tag">Wrapping up</span></div>
+            <div class="tl-role display">AI / ML Intern</div>
+            <div class="tl-org">Infosys Springboard — Virtual Internship 7.0</div>
+            <ul>
+              <li>Structured, curriculum‑based internship spanning AI, Machine Learning, and Generative AI fundamentals — nearing completion.</li>
+              <li>Applied prompt engineering alongside Agile, the SDLC, and Git/GitHub workflows.</li>
+              <li>Built backend fluency to connect ML work to deployable applications.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-entry reveal" data-tl>
           <div class="tl-card">
             <div class="tl-date mono">Jul 2025 — Aug 2025</div>
             <div class="tl-role display">AI / Prompt Engineering Intern</div>
@@ -397,6 +410,7 @@
               <li>Built automation pipelines with Zapier and n8n; developed AI music‑ and diagram‑generation tools.</li>
             </ul>
           </div>
+          <div class="tl-node"><div class="dot"></div></div>
         </div>
       </div>
     </div>
@@ -407,16 +421,32 @@
     <div class="wrap">
       <div class="builds-head reveal">
         <div class="k">Featured work</div>
-        <h2 class="display">Three problems, shipped.</h2>
+        <h2 class="display">Four problems, shipped.</h2>
+      </div>
+
+      <div class="act" data-act>
+        <div class="wrap act-inner">
+          <div class="act3-grid">
+            <div>
+              <div class="act-eyebrow mono">Act 01 — LifeLine</div>
+              <div class="act-title display">In a crisis, the right document is never the one you can find.</div>
+              <p class="act-text">A personal information and emergency‑continuity system built for the AWS × WeMakeDevs "First Commit" hackathon (Build It track). It collects documents, extracts and prioritizes what matters, then generates an emergency action plan — backed by a 108‑test backend suite.</p>
+              <a class="act-link" href="https://github.com/DoyelMishra15/Lifeline" target="_blank" rel="noopener">View on GitHub ↗</a>
+            </div>
+            <div class="word-cloud mono tilt-card" data-tilt style="font-family:'Fraunces',serif;">
+              <span class="hot">collect</span><span>documents</span><span class="hot">understand</span><span>emergency</span><span class="hot">prioritize</span><span>continuity</span><span class="hot">respond</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="act" data-act>
         <div class="wrap act-inner">
           <div class="act1-grid">
             <div>
-              <div class="act-eyebrow mono">Act 01 — CareerLens AI</div>
+              <div class="act-eyebrow mono">Act 02 — CareerLens AI</div>
               <div class="act-title display">Screening resumes shouldn't take a recruiter's whole afternoon.</div>
-              <p class="act-text">An AI resume‑analysis tool built on FastAPI and sentence‑transformers. It computes a JD match score and surfaces skill gaps — with an async architecture behind it.</p>
+              <p class="act-text">An AI resume‑analysis tool built on FastAPI and sentence‑transformers. It computes a JD match score and surfaces skill gaps — with an async, ONNX‑backed architecture behind it, deployed on Render.</p>
               <a class="act-link" href="https://github.com/DoyelMishra15/CareerLens-AI" target="_blank" rel="noopener">View on GitHub ↗</a>
             </div>
             <div class="counter-block tilt-card" data-tilt>
@@ -431,18 +461,18 @@
         <div class="wrap act-inner">
           <div class="act2-grid">
             <div>
-              <div class="act-eyebrow mono">Act 02 — Sales Forecasting Dashboard</div>
-              <div class="act-title display">Retail teams plan around gut feel more than data.</div>
-              <p class="act-text">A Streamlit dashboard combining Prophet and polynomial regression — configurable 30–365 day forecasts, KPI tracking, rolling averages, and anomaly alerts.</p>
-              <a class="act-link" href="https://github.com/DoyelMishra15/Sales-Forecasting-Dashboard" target="_blank" rel="noopener">View on GitHub ↗</a>
+              <div class="act-eyebrow mono">Act 03 — OrbitOps India</div>
+              <div class="act-title display">A ground station can only talk to one satellite at a time.</div>
+              <p class="act-text">A satellite‑pass planning and ground‑station scheduling platform for Indian university CubeSat teams — live TLE‑based pass prediction (Skyfield/SGP4) plus a provably optimal, fully explainable conflict‑free scheduler.</p>
+              <a class="act-link" href="https://github.com/DoyelMishra15/orbitops-india" target="_blank" rel="noopener">View on GitHub ↗</a>
             </div>
             <div class="chart-wrap tilt-card" data-tilt>
               <svg viewBox="0 0 400 220">
                 <defs><linearGradient id="chartgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--signal)" stop-opacity="0.28"/><stop offset="100%" stop-color="var(--signal)" stop-opacity="0"/></linearGradient></defs>
                 <path class="area" d="M0 170 C 60 150,90 90,140 100 S 220 60,260 70 S 330 30,400 20 L400 220 L0 220 Z"/>
                 <path class="line" d="M0 170 C 60 150,90 90,140 100 S 220 60,260 70 S 330 30,400 20"/>
-                <text x="10" y="200" class="chart-badge">R² &gt; 0.85</text>
-                <text x="300" y="14" class="chart-badge strong">MAPE &lt; 8%</text>
+                <text x="10" y="200" class="chart-badge">44/44 tests</text>
+                <text x="270" y="14" class="chart-badge strong">Skyfield · SGP4</text>
               </svg>
             </div>
           </div>
@@ -451,15 +481,16 @@
 
       <div class="act" data-act>
         <div class="wrap act-inner">
-          <div class="act3-grid">
+          <div class="act1-grid">
             <div>
-              <div class="act-eyebrow mono">Act 03 — Employee Sentiment Analysis</div>
-              <div class="act-title display">Feedback is rich but hard to scan at scale.</div>
-              <p class="act-text">An NLP pipeline classifying open‑ended employee feedback through text preprocessing and sentiment modeling — turning free text into HR‑actionable signal.</p>
-              <a class="act-link" href="https://github.com/DoyelMishra15/Employee_Sentiment_Analysis_Project" target="_blank" rel="noopener">View on GitHub ↗</a>
+              <div class="act-eyebrow mono">Act 04 — Reflow</div>
+              <div class="act-title display">Retrying every failed payment just burns issuer trust.</div>
+              <p class="act-text">A gated ML decision engine for the Razorpay AI Buildathon (Track 03: AI Revenue Recovery). Hard safety gates run first, then a gradient‑boosted classifier scores retry probability — every decision, gate, and action fully audited.</p>
+              <a class="act-link" href="https://github.com/DoyelMishra15/reflow-revenue-recovery" target="_blank" rel="noopener">View on GitHub ↗</a>
             </div>
-            <div class="word-cloud mono tilt-card" data-tilt style="font-family:'Fraunces',serif;">
-              <span class="hot">morale</span><span>burnout</span><span class="hot">clarity</span><span>friction</span><span>trust</span><span class="hot">momentum</span><span>tenure</span>
+            <div class="counter-block tilt-card" data-tilt>
+              <div class="counter"><span class="cval display" data-count="12.2" data-suffix="%">0%</span><span class="clabel">fewer unnecessary retries vs. gates‑only baseline</span></div>
+              <div class="counter"><span class="cval display" data-count="5" data-suffix="">0</span><span class="clabel">bounded, fully‑audited recovery actions</span></div>
             </div>
           </div>
         </div>
@@ -715,11 +746,11 @@ document.querySelectorAll('#heroName .ln').forEach((line, li) => {
   resize(); window.addEventListener('resize', resize);
 
   const groups = [
-    { name:'Languages', color:'ink', items:['Python','Java','C','SQL'] },
-    { name:'AI / ML', color:'signal', items:['Machine Learning','Generative AI','Prompt Engineering','Computer Vision','NLP','PyTorch','RAG','Sentence Transformers'] },
-    { name:'Backend', color:'ink', items:['FastAPI','Flask','REST APIs'] },
+    { name:'Languages', color:'ink', items:['Python','Java','C','SQL','TypeScript'] },
+    { name:'AI / ML', color:'signal', items:['Machine Learning','Generative AI','Prompt Engineering','Computer Vision','NLP','PyTorch','RAG','Sentence Transformers','scikit-learn'] },
+    { name:'Backend', color:'ink', items:['FastAPI','Flask','REST APIs','PostgreSQL','Redis','Docker'] },
     { name:'Core CS', color:'ink', items:['DSA','OOP','DBMS','Operating Systems','Computer Networks'] },
-    { name:'Tools', color:'ink', items:['Git','GitHub','VS Code','Jupyter','Streamlit'] },
+    { name:'Tools', color:'ink', items:['Git','GitHub','VS Code','Jupyter','Streamlit','React'] },
   ];
   let nodes = [];
   function layout(){
@@ -808,11 +839,10 @@ document.querySelectorAll('#heroName .ln').forEach((line, li) => {
   const data = [
     { badge:'ISRO', year:'2026', title:'ISRO SDSC SHAR', desc:"Selected for an internship at Satish Dhawan Space Centre — India's premier space launch facility." },
     { badge:'SIH 2025', year:'2025', title:'SIH National Finalist', desc:'Smart India Hackathon 2025 — national finalist.' },
-    { badge:'Cybersecurity', year:'Coursera', title:'Google Cybersecurity', desc:'Google Cybersecurity Professional Certificate.' },
-    { badge:'Gen AI', year:'Google Cloud', title:'Google Generative AI', desc:'Generative AI certification via Google Cloud Skills Boost.' },
-    { badge:'CS50', year:'Harvard', title:'CS50 — Python', desc:'CS50: Introduction to Programming with Python, Harvard University.' },
-    { badge:'Data Analysis', year:'freeCodeCamp', title:'Data Analysis with Python', desc:'Data Analysis with Python certification.' },
-    { badge:'GSSoC', year:'Open Source', title:'GirlScript Summer of Code', desc:'Contributor — GSSoC open source program.' },
+    { badge:'9.49 CGPA', year:'2023–27', title:'B.Tech CSE, CVRGU', desc:'9.49 CGPA — C.V. Raman Global University, Bhubaneswar.' },
+    { badge:'200+ LeetCode', year:'Ongoing', title:'200+ Problems Solved', desc:'200+ LeetCode problems solved across arrays, graphs, DP, and heaps.' },
+    { badge:'First Commit', year:'2026', title:'AWS × WeMakeDevs Hackathon', desc:'Built LifeLine for the Build It track — an emergency‑continuity system with a 108‑test backend suite.' },
+    { badge:'Razorpay AI', year:'2026', title:'Razorpay AI Buildathon', desc:'Built Reflow, an ML‑gated revenue‑recovery engine, for Track 03: AI Revenue Recovery.' },
   ];
   const ticker = document.getElementById('ticker');
   const stage = { badge: document.getElementById('recBadgeYear'), title: document.getElementById('recTitle'), desc: document.getElementById('recDesc') };
