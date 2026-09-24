@@ -151,14 +151,14 @@
   .tl-entry.in .tl-node .dot{ border-color:var(--signal); background:var(--signal); }
   .tl-node .dot.now{ animation:pulse 2s ease-in-out infinite; }
   .tl-card{ grid-column:1; text-align:right; padding-right:44px; }
-  .tl-entry:nth-child(2) .tl-card{ grid-column:3; text-align:left; padding-right:0; padding-left:44px; }
-  @media (max-width:760px){ .tl-card, .tl-entry:nth-child(2) .tl-card{ grid-column:2; text-align:left; padding:0 0 0 24px; } }
+  .tl-entry:nth-child(3) .tl-card{ grid-column:3; text-align:left; padding-right:0; padding-left:44px; }
+  @media (max-width:760px){ .tl-card, .tl-entry:nth-child(3) .tl-card{ grid-column:2; text-align:left; padding:0 0 0 24px; } }
   .tl-date{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-faint); margin-bottom:8px; }
   .tl-tag{ display:inline-block; margin-left:8px; font-size:10.5px; background:var(--signal-soft); color:var(--signal); padding:2px 8px; border-radius:20px; }
   .tl-role{ font-family:'Fraunces',serif; font-size:24px; font-weight:460; margin-bottom:3px; }
   .tl-org{ font-size:14px; color:var(--ink-soft); margin-bottom:14px; }
   .tl-card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
-  .tl-entry:not(:nth-child(2)) .tl-card ul{ align-items:flex-end; }
+  .tl-entry:nth-child(2) .tl-card ul{ align-items:flex-end; }
   .tl-card li{ font-size:14.5px; color:var(--ink-soft); max-width:340px; }
 
   /* ================= CH.4 — BUILDS ================= */
@@ -237,22 +237,6 @@
   #node-label.show{ opacity:1; }
   @media (max-width:760px){ #constellation-wrap{ height:420px; } }
 
-  /* ================= CH.6 — RECOGNITION (ticker) ================= */
-  #recognition{ background:var(--bg-alt); padding:130px 0; }
-  .rec-head{ text-align:center; margin-bottom:70px; }
-  .rec-head .k{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.12em; margin-bottom:14px; }
-  .rec-head h2{ font-family:'Fraunces',serif; font-size:clamp(32px,5vw,52px); font-weight:460; }
-  .rec-stage{ text-align:center; min-height:110px; margin-bottom:50px; padding:0 20px; }
-  .rec-stage .rs-badge{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--signal); text-transform:uppercase; letter-spacing:.1em; margin-bottom:10px; transition:opacity .25s; }
-  .rec-stage h3{ font-family:'Fraunces',serif; font-size:28px; font-weight:460; margin-bottom:8px; transition:opacity .25s; }
-  .rec-stage p{ font-size:14.5px; color:var(--ink-soft); max-width:520px; margin:0 auto; transition:opacity .25s; }
-  .ticker-wrap{ overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:26px 0; }
-  .ticker{ display:flex; gap:0; white-space:nowrap; animation:ticker-scroll 32s linear infinite; width:max-content; }
-  .ticker-wrap:hover .ticker{ animation-play-state:paused; }
-  @keyframes ticker-scroll{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
-  .badge{ font-family:'Fraunces',serif; font-size:22px; padding:0 40px; border-right:1px solid var(--line); cursor:pointer; color:var(--ink-faint); transition:color .3s; flex-shrink:0; }
-  .badge:hover, .badge.active{ color:var(--ink); }
-
   /* ================= CH.7 — CLOSING / CONTACT ================= */
   #closing{ padding:170px 0 90px; text-align:center; }
   .closing-eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.12em; margin-bottom:24px; }
@@ -306,7 +290,6 @@
   <button class="magnetic" data-target="timeline"><span class="cn-label mono">timeline</span><span class="cn-dot"></span></button>
   <button class="magnetic" data-target="builds"><span class="cn-label mono">builds</span><span class="cn-dot"></span></button>
   <button class="magnetic" data-target="toolkit"><span class="cn-label mono">toolkit</span><span class="cn-dot"></span></button>
-  <button class="magnetic" data-target="recognition"><span class="cn-label mono">recognition</span><span class="cn-dot"></span></button>
   <button class="magnetic" data-target="closing"><span class="cn-label mono">contact</span><span class="cn-dot"></span></button>
 </nav>
 
@@ -388,13 +371,12 @@
 
         <div class="tl-entry reveal" data-tl>
           <div class="tl-card">
-            <div class="tl-date mono">Jul 2025 — Aug 2025</div>
-            <div class="tl-role display">AI / Prompt Engineering Intern</div>
-            <div class="tl-org">Mirai School of Technology · Remote</div>
+            <div class="tl-date mono">2026 <span class="tl-tag">Selected</span></div>
+            <div class="tl-role display">AI / ML Intern</div>
+            <div class="tl-org">ISRO — Satish Dhawan Space Centre (SDSC SHAR)</div>
             <ul>
-              <li>Designed and optimized 20+ prompts for AI automation workflows, improving output relevance by roughly 30%.</li>
-              <li>Engineered 3 AI‑powered mini tools via multi‑step prompt chaining, cutting task time by roughly 25%.</li>
-              <li>Built automation pipelines with Zapier and n8n; developed AI music‑ and diagram‑generation tools.</li>
+              <li>Provisional selection for an internship at Satish Dhawan Space Centre — ISRO’s premier space launch facility.</li>
+              <li>Selected for an opportunity to work in the Indian space research ecosystem, with onboarding and exact dates to be confirmed by ISRO.</li>
             </ul>
           </div>
           <div class="tl-node"><div class="dot"></div></div>
@@ -502,24 +484,6 @@
         <canvas id="constellation"></canvas>
         <div id="node-label" class="mono"></div>
       </div>
-    </div>
-  </section>
-
-  <!-- CH.6 RECOGNITION -->
-  <section id="recognition" class="chapter">
-    <div class="wrap">
-      <div class="rec-head reveal">
-        <div class="k">Recognition</div>
-        <h2 class="display">Hover a mark to read it.</h2>
-      </div>
-      <div class="rec-stage" id="recStage">
-        <div class="rs-badge mono" id="recBadgeYear">2026</div>
-        <h3 class="display" id="recTitle">ISRO SDSC SHAR</h3>
-        <p id="recDesc">Selected for an internship at Satish Dhawan Space Centre — India's premier space launch facility.</p>
-      </div>
-    </div>
-    <div class="ticker-wrap">
-      <div class="ticker" id="ticker"></div>
     </div>
   </section>
 
@@ -819,38 +783,6 @@ document.querySelectorAll('#heroName .ln').forEach((line, li) => {
     if(!reduceMotion) requestAnimationFrame(frame); else requestAnimationFrame(frame);
   }
   frame();
-})();
-
-/* ---------- recognition ticker ---------- */
-(function(){
-  const data = [
-    { badge:'ISRO', year:'2026', title:'ISRO SDSC SHAR', desc:"Selected for an internship at Satish Dhawan Space Centre — India's premier space launch facility." },
-    { badge:'SIH 2025', year:'2025', title:'SIH National Finalist', desc:'Smart India Hackathon 2025 — national finalist.' },
-    { badge:'9.49 CGPA', year:'2023–27', title:'B.Tech CSE, CVRGU', desc:'9.49 CGPA — C.V. Raman Global University, Bhubaneswar.' },
-    { badge:'200+ LeetCode', year:'Ongoing', title:'200+ Problems Solved', desc:'200+ LeetCode problems solved across arrays, graphs, DP, and heaps.' },
-    { badge:'First Commit', year:'2026', title:'AWS × WeMakeDevs Hackathon', desc:'Built LifeLine for the Build It track — an emergency‑continuity system with a 108‑test backend suite.' },
-    { badge:'Razorpay AI', year:'2026', title:'Razorpay AI Buildathon', desc:'Built Reflow, an ML‑gated revenue‑recovery engine, for Track 03: AI Revenue Recovery.' },
-  ];
-  const ticker = document.getElementById('ticker');
-  const stage = { badge: document.getElementById('recBadgeYear'), title: document.getElementById('recTitle'), desc: document.getElementById('recDesc') };
-  function render(){
-    ticker.innerHTML = '';
-    [...data, ...data].forEach((d) => {
-      const el = document.createElement('div');
-      el.className = 'badge display';
-      el.textContent = d.badge;
-      el.addEventListener('mouseenter', () => {
-        document.querySelectorAll('.badge').forEach(b=>b.classList.remove('active'));
-        stage.badge.style.opacity=0; stage.title.style.opacity=0; stage.desc.style.opacity=0;
-        setTimeout(() => {
-          stage.badge.textContent = d.year; stage.title.textContent = d.title; stage.desc.textContent = d.desc;
-          stage.badge.style.opacity=1; stage.title.style.opacity=1; stage.desc.style.opacity=1;
-        }, 120);
-      });
-      ticker.appendChild(el);
-    });
-  }
-  render();
 })();
 
 /* ---------- magnetic closing heading ---------- */
